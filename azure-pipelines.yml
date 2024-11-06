@@ -17,7 +17,7 @@ variables:
   - name: TerraformWorkingDirectory
     value: $(System.DefaultWorkingDirectory)/Terraform
   - name: AzureServiceConnection
-    value: 'AzureServiceConnectionSub'
+    value: 'AzServiceManagedIdentity'
 
 stages:
   - stage: ServiceBusInfrastructure
