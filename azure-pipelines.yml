@@ -20,7 +20,7 @@ variables:
     value: 'AzServiceConnection'
 
 stages:
-  - stage: SetupInfrastructure-ServiceBus
+  - stage: ServiceBusInfrastructure
     displayName: Test - Setup Infrastructure
     jobs:
       - template: jobs/setup-api-management.yml@CICD
