@@ -1,0 +1,34 @@
+name: $(Build.DefinitionName)_$(Date:yyyyMMdd)$(Rev:.r)
+trigger: none
+pr: none
+
+pool:
+  vmImage: 'windows-latest'
+
+resources:
+  repositories:
+    - repository: CICD
+      type: github
+      ref: main
+      name: nhatthaiquang-agilityio/Terraform-CI-CD
+      endpoint: nhatthaiquang-agilityio
+
+variables:
+  - name: TerraformWorkingDirectory
+    value: $(System.DefaultWorkingDirectory)/Terraform
+  - name: AzureServiceConnection
+    value: 'AzServiceConnection'
+
+stages:
+  - stage: SetupInfrastructure-ServiceBus
+    displayName: Test - Setup Infrastructure
+    jobs:
+      - template: jobs/setup-api-management.yml@CICD
+        parameters:
+          EnvironmentName: Test
+          TerraformWorkingDirectory: '${{ variables.TerraformWorkingDirectory }}'
+          AzureServiceConnectionName: '${{ variables.AzureServiceConnection }}'
+          AzureResourceGroupName: 'RG-ExampleAzureFunctions'
+          StorageAccountsName: 'testtfstorageforazfunc'
+          AzureContainerName: 'testtfconstainerforazfunc'
+          AzureRmKeyTFState: 'test.service-bus-infrastructure.tfstate'
