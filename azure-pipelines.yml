@@ -29,6 +29,6 @@ stages:
           TerraformWorkingDirectory: '${{ variables.TerraformWorkingDirectory }}'
           AzureServiceConnectionName: '${{ variables.AzureServiceConnection }}'
           AzureResourceGroupName: 'RG-ExampleAzureFunctions'
-          StorageAccountsName: 'tfstorageinfrastructure'
-          AzureContainerName: 'tfconstainerinfrastructure'
+          StorageAccountsName: 'tfinfrastructurestorage'
+          AzureContainerName: 'tfinfrastructurecontainer'
           AzureRmKeyTFState: 'test.service-bus-infrastructure.tfstate'
