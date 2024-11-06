@@ -23,7 +23,7 @@ stages:
   - stage: ServiceBusInfrastructure
     displayName: Test - Setup Infrastructure
     jobs:
-      - template: jobs/setup-api-management.yml@CICD
+      - template: jobs/setup-azure-infrastructure.yml@CICD
         parameters:
           EnvironmentName: Test
           TerraformWorkingDirectory: '${{ variables.TerraformWorkingDirectory }}'
